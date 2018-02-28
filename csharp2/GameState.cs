@@ -4,7 +4,7 @@ namespace TennisGame.Tests
     {
         PointScore,
         Deuce,
-        Won,
-        Advantage
+        Advantage,
+        Game
     }
 }

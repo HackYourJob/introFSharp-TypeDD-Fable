@@ -7,7 +7,7 @@ namespace TennisGame.Tests
         public Score Player1Score { get; private set; }
         public Score Player2Score { get; private set; }
         
-        public GameState State
+        private GameState State
         {
             get
             {
