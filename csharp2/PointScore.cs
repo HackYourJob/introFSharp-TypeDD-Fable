@@ -22,7 +22,7 @@ namespace TennisGame.Tests
                 : (_player1Score, AddPoint(_player2Score));
                 
             if (player1Score == Score.Forty && player2Score == Score.Forty)
-                return new GameState(Score.Forty, Score.Forty); // TODO to replace by Deuce
+                return new Deuce();
             if (player1Score == Score.Game || player2Score == Score.Game)
                 return new Game(player);
             return new PointScore(player1Score, player2Score);

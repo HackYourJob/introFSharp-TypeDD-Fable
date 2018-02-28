@@ -70,7 +70,7 @@ namespace TennisGame.Tests
         [Fact]
         public void ReturnPlayer1AdvantageWhenScoreIsDeuceAndPlayer1Scores()
         {
-            var game = new GameRunner(new GameState(Score.Forty, Score.Forty));
+            var game = new GameRunner(new Deuce());
             game.ScoreAPoint(Player.Player1);
             game.SayScore().Should().Be("Advantage Player1");
         }

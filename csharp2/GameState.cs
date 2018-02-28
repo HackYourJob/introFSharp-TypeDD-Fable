@@ -12,10 +12,6 @@ namespace TennisGame.Tests
 
         internal virtual string SayScore()
         {
-            if (Player1Score == Score.Forty && Player2Score == Score.Forty)
-            {
-                return "Deuce";
-            }
             if (Player1Score == Score.Advantage)
             {
                 return "Advantage Player1";
@@ -34,8 +30,6 @@ namespace TennisGame.Tests
         {
             get
             {
-                if (Player1Score == Score.Forty && Player2Score == Score.Forty)
-                    return StateEnum.Deuce;
                 if (Player1Score == Score.Advantage || Player2Score == Score.Advantage)
                     return StateEnum.Advantage;
                 return StateEnum.PointScore;
@@ -44,24 +38,17 @@ namespace TennisGame.Tests
 
         internal virtual GameState ScoreAPoint(Player player)
         {
-            if (State == StateEnum.Deuce)
-            {
-                if (player == Player.Player1)
-                    Player1Score = Score.Advantage;
-                else
-                    Player2Score = Score.Advantage;
-            }
-            else if (State == StateEnum.Advantage)
+            if (State == StateEnum.Advantage)
             {
                 if (player == Player.Player1)
                     if (Player2Score == Score.Advantage)
-                        Player2Score = Score.Forty;
+                        return new Deuce();
                     else
                         return new Game(player);
                 else if (Player2Score == Score.Advantage)
                     return new Game(player);
                 else
-                    Player1Score = Score.Forty;
+                    return new Deuce();
             }
             return this;
         }
