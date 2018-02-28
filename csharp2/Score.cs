@@ -6,7 +6,6 @@ namespace TennisGame.Tests
         Fifteen,
         Thirty,
         Forty,
-        Game,
-        Advantage
+        Game
     }
 }

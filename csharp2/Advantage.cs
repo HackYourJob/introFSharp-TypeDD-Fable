@@ -5,7 +5,6 @@ namespace TennisGame.Tests
         private Player _player;
 
         public Advantage(Player player)
-            : base(Score.Love, Score.Love) // TODO : useless but still needed
         {
             _player = player;
         }

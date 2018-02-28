@@ -6,7 +6,6 @@ namespace TennisGame.Tests
         private readonly Score _player2Score;
 
         public PointScore(Score player1Score, Score player2Score) 
-            : base(player1Score, player2Score)
         {
             _player1Score = player1Score;
             _player2Score = player2Score;
