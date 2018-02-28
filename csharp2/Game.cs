@@ -1,30 +1,15 @@
-using System;
-
 namespace TennisGame.Tests
 {
-    internal class Game
+    internal class Game : GameState
     {
-        private GameState _gameState;
+        private Player _player;
 
-        public string SayScore()
+        public Game(Player player)
+            : base(Score.Love, Score.Love) // TODO: don't care but still needed for now...
         {
-            return _gameState.SayScore();
+            _player = player;
         }
 
-        public Game()
-        {
-            _gameState = new PointScore(Score.Love, Score.Love);
-        }
-
-        public Game(GameState gameState)
-        {
-            _gameState = gameState;
-        }
-
-        internal Game ScoreAPoint(Player player)
-        {
-            _gameState = _gameState.ScoreAPoint(player);
-            return this;
-        }
+        internal override string SayScore() => $"Game {_player.ToString()}";
     }
 }

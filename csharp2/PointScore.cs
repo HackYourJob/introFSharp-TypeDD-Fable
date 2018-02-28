@@ -12,14 +12,8 @@ namespace TennisGame.Tests
             _player2Score = player2Score;
         }
 
-        internal override string SayScore()
-        {
-            if (_player1Score == Score.Game)
-                return "Game Player1";
-            if (_player2Score == Score.Game)
-                return "Game Player2";
-            return $"{_player1Score.ToString()}-{_player2Score.ToString()}";
-        }
+        internal override string SayScore() 
+            => $"{_player1Score.ToString()}-{_player2Score.ToString()}";
 
         internal override GameState ScoreAPoint(Player player)
         {
@@ -29,6 +23,8 @@ namespace TennisGame.Tests
                 
             if (player1Score == Score.Forty && player2Score == Score.Forty)
                 return new GameState(Score.Forty, Score.Forty); // TODO to replace by Deuce
+            if (player1Score == Score.Game || player2Score == Score.Game)
+                return new Game(player);
             return new PointScore(player1Score, player2Score);
         }
         
