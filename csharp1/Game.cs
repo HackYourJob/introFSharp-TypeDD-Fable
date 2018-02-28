@@ -23,6 +23,9 @@ namespace TennisKata
                 if (_player1Score == PlayerScore.Advantage)
                     return "Advantage Player 1";
 
+                if (_player2Score == PlayerScore.Advantage)
+                    return "Advantage Player 2";
+
                 return $"{_player1Score}-{_player2Score}";
             }
         }

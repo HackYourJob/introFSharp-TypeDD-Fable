@@ -130,6 +130,22 @@ namespace TennisKata
         }
 
         [Fact]
+        public void ReturnAdvantagePlayer2WhenPlayer2ScoresAfterDeuce()
+        {
+            var game = new Game();
+            game.ScoreAPoint(Player.Player2);
+            game.ScoreAPoint(Player.Player2);
+            game.ScoreAPoint(Player.Player2);
+            game.ScoreAPoint(Player.Player1);
+            game.ScoreAPoint(Player.Player1);
+            game.ScoreAPoint(Player.Player1);
+            game.ScoreAPoint(Player.Player2);
+
+            var score = game.Score;
+            score.Should().Be("Advantage Player 2");
+        }
+
+        [Fact]
         public void ReturnDeuceWhenPlayer1ScoresAfterDeuceThenPlayer2Scores()
         {
             var game = new Game();
