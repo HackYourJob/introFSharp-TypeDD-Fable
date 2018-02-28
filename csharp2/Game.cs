@@ -11,5 +11,7 @@ namespace TennisGame.Tests
         }
 
         internal override string SayScore() => $"Game {_player.ToString()}";
+
+        internal override GameState ScoreAPoint(Player player) => this;
     }
 }

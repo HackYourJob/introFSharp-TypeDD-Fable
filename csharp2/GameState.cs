@@ -2,7 +2,7 @@ using System;
 
 namespace TennisGame.Tests
 {
-    public class GameState
+    public abstract class GameState
     {
         public GameState(Score player1Score, Score player2Score)
         {
@@ -36,22 +36,7 @@ namespace TennisGame.Tests
             }
         }
 
-        internal virtual GameState ScoreAPoint(Player player)
-        {
-            if (State == StateEnum.Advantage)
-            {
-                if (player == Player.Player1)
-                    if (Player2Score == Score.Advantage)
-                        return new Deuce();
-                    else
-                        return new Game(player);
-                else if (Player2Score == Score.Advantage)
-                    return new Game(player);
-                else
-                    return new Deuce();
-            }
-            return this;
-        }
+        internal abstract GameState ScoreAPoint(Player player);
 
         private enum StateEnum
         {

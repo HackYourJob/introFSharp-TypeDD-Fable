@@ -10,8 +10,6 @@ namespace TennisGame.Tests
         internal override string SayScore() => "Deuce";
 
         internal override GameState ScoreAPoint(Player player)
-            => player == Player.Player1
-                ? new GameState(Score.Advantage, Score.Forty)
-                : new GameState(Score.Forty, Score.Advantage);
+            => new Advantage(player);
     }
 }
