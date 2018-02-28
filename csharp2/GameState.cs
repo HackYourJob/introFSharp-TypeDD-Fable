@@ -24,14 +24,6 @@ namespace TennisGame.Tests
             {
                 return "Advantage Player2";
             }
-            if (Player1Score == Score.Game)
-            {
-                return "Game Player1";
-            }
-            if (Player2Score == Score.Game)
-            {
-                return "Game Player2";
-            }
             return ".....";
         }
 
@@ -65,10 +57,9 @@ namespace TennisGame.Tests
                     if (Player2Score == Score.Advantage)
                         Player2Score = Score.Forty;
                     else
-                        Player1Score = Score.Game;
-                else
-                    if (Player2Score == Score.Advantage)
-                    Player2Score = Score.Game;
+                        return new Game(player);
+                else if (Player2Score == Score.Advantage)
+                    return new Game(player);
                 else
                     Player1Score = Score.Forty;
             }
