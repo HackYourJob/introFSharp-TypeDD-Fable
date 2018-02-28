@@ -18,7 +18,7 @@ namespace TennisKata
         public void ReturnFifteenLoveWhenPlayer1Scores()
         {
             var game = new Game();
-            game.Player1Scores();
+            game.ScoreAPoint(Player.Player1);
             var score = game.Score;
             score.Should().Be("Fifteen-Love");
         }
@@ -27,8 +27,8 @@ namespace TennisKata
         public void ReturnThirtyLoveWhenPlayer1ScoresTwiceInARow()
         {
             var game = new Game();
-            game.Player1Scores();
-            game.Player1Scores();
+            game.ScoreAPoint(Player.Player1);
+            game.ScoreAPoint(Player.Player1);
             var score = game.Score;
             score.Should().Be("Thirty-Love");
         }
@@ -37,9 +37,9 @@ namespace TennisKata
         public void ReturnFortyLoveWhenPlayer1Scores3TimesInARow()
         {
             var game = new Game();
-            game.Player1Scores();
-            game.Player1Scores();
-            game.Player1Scores();
+            game.ScoreAPoint(Player.Player1);
+            game.ScoreAPoint(Player.Player1);
+            game.ScoreAPoint(Player.Player1);
             var score = game.Score;
             score.Should().Be("Forty-Love");
         }
@@ -48,10 +48,10 @@ namespace TennisKata
         public void ReturnGamePlayer1WhenPlayer1Scores4TimesInARow()
         {
             var game = new Game();
-            game.Player1Scores();
-            game.Player1Scores();
-            game.Player1Scores();
-            game.Player1Scores();
+            game.ScoreAPoint(Player.Player1);
+            game.ScoreAPoint(Player.Player1);
+            game.ScoreAPoint(Player.Player1);
+            game.ScoreAPoint(Player.Player1);
             var score = game.Score;
             score.Should().Be("Game Player 1");
         }
@@ -60,7 +60,7 @@ namespace TennisKata
         public void ReturnLoveFifteenWhenPlayer2Scores()
         {
             var game = new Game();
-            game.Player2Scores();
+            game.ScoreAPoint(Player.Player2);
             var score = game.Score;
             score.Should().Be("Love-Fifteen");
         }
@@ -69,8 +69,8 @@ namespace TennisKata
         public void ReturnLoveThirtyWhenPlayer2ScoresTwoInARow()
         {
             var game = new Game();
-            game.Player2Scores();
-            game.Player2Scores();
+            game.ScoreAPoint(Player.Player2);
+            game.ScoreAPoint(Player.Player2);
             var score = game.Score;
             score.Should().Be("Love-Thirty");
         }
@@ -79,9 +79,9 @@ namespace TennisKata
         public void ReturnLoveFortyWhenPlayer2ScoresThreeInARow()
         {
             var game = new Game();
-            game.Player2Scores();
-            game.Player2Scores();
-            game.Player2Scores();
+            game.ScoreAPoint(Player.Player2);
+            game.ScoreAPoint(Player.Player2);
+            game.ScoreAPoint(Player.Player2);
             var score = game.Score;
             score.Should().Be("Love-Forty");
         }
@@ -91,10 +91,10 @@ namespace TennisKata
         public void ReturnGamePlayer2WhenPlayer2Scores4timesInARow()
         {
             var game = new Game();
-            game.Player2Scores();
-            game.Player2Scores();
-            game.Player2Scores();
-            game.Player2Scores();
+            game.ScoreAPoint(Player.Player2);
+            game.ScoreAPoint(Player.Player2);
+            game.ScoreAPoint(Player.Player2);
+            game.ScoreAPoint(Player.Player2);
             var score = game.Score;
             score.Should().Be("Game Player 2");
         }
@@ -103,12 +103,12 @@ namespace TennisKata
         public void ReturnDeuceWhenPlayer1AndPlayer2Scores3TimesEach()
         {
             var game = new Game();
-            game.Player2Scores();
-            game.Player2Scores();
-            game.Player2Scores();
-            game.Player1Scores();
-            game.Player1Scores();
-            game.Player1Scores();
+            game.ScoreAPoint(Player.Player2);
+            game.ScoreAPoint(Player.Player2);
+            game.ScoreAPoint(Player.Player2);
+            game.ScoreAPoint(Player.Player1);
+            game.ScoreAPoint(Player.Player1);
+            game.ScoreAPoint(Player.Player1);
             var score = game.Score;
             score.Should().Be("Deuce");
         }
@@ -117,13 +117,13 @@ namespace TennisKata
         public void ReturnAdvantagePlayer1WhenPlayer1ScoresAfterDeuce()
         {
             var game = new Game();
-            game.Player2Scores();
-            game.Player2Scores();
-            game.Player2Scores();
-            game.Player1Scores();
-            game.Player1Scores();
-            game.Player1Scores();
-            game.Player1Scores();
+            game.ScoreAPoint(Player.Player2);
+            game.ScoreAPoint(Player.Player2);
+            game.ScoreAPoint(Player.Player2);
+            game.ScoreAPoint(Player.Player1);
+            game.ScoreAPoint(Player.Player1);
+            game.ScoreAPoint(Player.Player1);
+            game.ScoreAPoint(Player.Player1);
 
             var score = game.Score;
             score.Should().Be("Advantage Player 1");
@@ -133,14 +133,14 @@ namespace TennisKata
         public void ReturnDeuceWhenPlayer1ScoresAfterDeuceThenPlayer2Scores()
         {
             var game = new Game();
-            game.Player2Scores();
-            game.Player2Scores();
-            game.Player2Scores();
-            game.Player1Scores();
-            game.Player1Scores();
-            game.Player1Scores();
-            game.Player1Scores();
-            game.Player2Scores();
+            game.ScoreAPoint(Player.Player2);
+            game.ScoreAPoint(Player.Player2);
+            game.ScoreAPoint(Player.Player2);
+            game.ScoreAPoint(Player.Player1);
+            game.ScoreAPoint(Player.Player1);
+            game.ScoreAPoint(Player.Player1);
+            game.ScoreAPoint(Player.Player1);
+            game.ScoreAPoint(Player.Player2);
 
             var score = game.Score;
             score.Should().Be("Deuce");
@@ -150,14 +150,14 @@ namespace TennisKata
         public void ReturnGamePlayer1WhenPlayer1ScoresAfterAdvantage()
         {
             var game = new Game();
-            game.Player2Scores();
-            game.Player2Scores();
-            game.Player2Scores();
-            game.Player1Scores();
-            game.Player1Scores();
-            game.Player1Scores();
-            game.Player1Scores();
-            game.Player1Scores();
+            game.ScoreAPoint(Player.Player2);
+            game.ScoreAPoint(Player.Player2);
+            game.ScoreAPoint(Player.Player2);
+            game.ScoreAPoint(Player.Player1);
+            game.ScoreAPoint(Player.Player1);
+            game.ScoreAPoint(Player.Player1);
+            game.ScoreAPoint(Player.Player1);
+            game.ScoreAPoint(Player.Player1);
 
             var score = game.Score;
             score.Should().Be("Game Player 1");

@@ -27,14 +27,12 @@ namespace TennisKata
             }
         }
 
-        internal void Player1Scores()
+        internal void ScoreAPoint(Player player)
         {
-            (_player1Score, _player2Score) = AddPoint(_player1Score, _player2Score);
-        }
-
-        internal void Player2Scores()
-        {
-            (_player2Score, _player1Score) = AddPoint(_player2Score, _player1Score);
+            if (player == Player.Player1) 
+                (_player1Score, _player2Score) = AddPoint(_player1Score, _player2Score);
+            else
+                (_player2Score, _player1Score) = AddPoint(_player2Score, _player1Score);
         }
 
         private (PlayerScore, PlayerScore) AddPoint(PlayerScore score, PlayerScore otherScore)
