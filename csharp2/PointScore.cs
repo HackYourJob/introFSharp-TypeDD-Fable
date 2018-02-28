@@ -12,6 +12,15 @@ namespace TennisGame.Tests
             _player2Score = player2Score;
         }
 
+        internal override string SayScore()
+        {
+            if (_player1Score == Score.Game)
+                return "Game Player1";
+            if (_player2Score == Score.Game)
+                return "Game Player2";
+            return $"{_player1Score.ToString()}-{_player2Score.ToString()}";
+        }
+
         internal override GameState ScoreAPoint(Player player)
         {
             var (player1Score, player2Score) = player == Player.Player1 

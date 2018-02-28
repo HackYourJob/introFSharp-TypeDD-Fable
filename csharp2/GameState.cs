@@ -1,3 +1,5 @@
+using System;
+
 namespace TennisGame.Tests
 {
     public class GameState
@@ -6,6 +8,31 @@ namespace TennisGame.Tests
         {
             Player1Score = player1Score;
             Player2Score = player2Score;
+        }
+
+        internal virtual string SayScore()
+        {
+            if (Player1Score == Score.Forty && Player2Score == Score.Forty)
+            {
+                return "Deuce";
+            }
+            if (Player1Score == Score.Advantage)
+            {
+                return "Advantage Player1";
+            }
+            if (Player2Score == Score.Advantage)
+            {
+                return "Advantage Player2";
+            }
+            if (Player1Score == Score.Game)
+            {
+                return "Game Player1";
+            }
+            if (Player2Score == Score.Game)
+            {
+                return "Game Player2";
+            }
+            return ".....";
         }
 
         public Score Player1Score { get; private set; }

@@ -10,8 +10,7 @@ namespace TennisGame.Tests
         public void StartWithLoveLove()
         {
             var game = new Game();
-            game.Player1Score.Should().Be(Score.Love);
-            game.Player2Score.Should().Be(Score.Love);
+            game.SayScore().Should().Be("Love-Love");
         }
 
         [Fact]
@@ -19,8 +18,7 @@ namespace TennisGame.Tests
         {
             var game = new Game();
             game.ScoreAPoint(Player.Player1);
-            game.Player1Score.Should().Be(Score.Fifteen);
-            game.Player2Score.Should().Be(Score.Love);
+            game.SayScore().Should().Be("Fifteen-Love");
         }
 
         [Fact]
@@ -28,8 +26,7 @@ namespace TennisGame.Tests
         {
             var game = new Game();
             game.ScoreAPoint(Player.Player2);
-            game.Player1Score.Should().Be(Score.Love);
-            game.Player2Score.Should().Be(Score.Fifteen);
+            game.SayScore().Should().Be("Love-Fifteen");
         }
 
         [Fact]
@@ -38,8 +35,7 @@ namespace TennisGame.Tests
             var game = new Game();
             game.ScoreAPoint(Player.Player2)
                 .ScoreAPoint(Player.Player2);
-            game.Player1Score.Should().Be(Score.Love);
-            game.Player2Score.Should().Be(Score.Thirty);
+            game.SayScore().Should().Be("Love-Thirty");
         }
 
         [Fact]
@@ -49,8 +45,7 @@ namespace TennisGame.Tests
             game.ScoreAPoint(Player.Player2)
                 .ScoreAPoint(Player.Player2)
                 .ScoreAPoint(Player.Player2);
-            game.Player1Score.Should().Be(Score.Love);
-            game.Player2Score.Should().Be(Score.Forty);
+            game.SayScore().Should().Be("Love-Forty");
         }
 
         [Fact]
@@ -61,8 +56,7 @@ namespace TennisGame.Tests
                 .ScoreAPoint(Player.Player2)
                 .ScoreAPoint(Player.Player2)
                 .ScoreAPoint(Player.Player2);
-            game.Player1Score.Should().Be(Score.Love);
-            game.Player2Score.Should().Be(Score.Game);
+            game.SayScore().Should().Be("Game Player2");
         }
 
         [Fact]
@@ -70,8 +64,7 @@ namespace TennisGame.Tests
         {
             var game = new Game(new PointScore(Score.Forty, Score.Thirty));
             game.ScoreAPoint(Player.Player1);
-            game.Player1Score.Should().Be(Score.Game);
-            game.Player2Score.Should().Be(Score.Thirty);
+            game.SayScore().Should().Be("Game Player1");
         }
 
         [Fact]
@@ -79,8 +72,7 @@ namespace TennisGame.Tests
         {
             var game = new Game(new GameState(Score.Forty, Score.Forty));
             game.ScoreAPoint(Player.Player1);
-            game.Player1Score.Should().Be(Score.Advantage);
-            game.Player2Score.Should().Be(Score.Forty);
+            game.SayScore().Should().Be("Advantage Player1");
         }
 
         [Fact]
@@ -88,8 +80,7 @@ namespace TennisGame.Tests
         {
             var game = new Game(new GameState(Score.Advantage, Score.Forty));
             game.ScoreAPoint(Player.Player1);
-            game.Player1Score.Should().Be(Score.Game);
-            game.Player2Score.Should().Be(Score.Forty);
+            game.SayScore().Should().Be("Game Player1");
         }
 
         [Fact]
@@ -97,8 +88,7 @@ namespace TennisGame.Tests
         {
             var game = new Game(new GameState(Score.Advantage, Score.Forty));
             game.ScoreAPoint(Player.Player2);
-            game.Player1Score.Should().Be(Score.Forty);
-            game.Player2Score.Should().Be(Score.Forty);
+            game.SayScore().Should().Be("Deuce");
         }
     }
 }

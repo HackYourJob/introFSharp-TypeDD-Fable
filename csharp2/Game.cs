@@ -6,8 +6,10 @@ namespace TennisGame.Tests
     {
         private GameState _gameState;
 
-        public Score Player1Score => _gameState.Player1Score;
-        public Score Player2Score => _gameState.Player2Score;
+        public string SayScore()
+        {
+            return _gameState.SayScore();
+        }
 
         public Game()
         {
