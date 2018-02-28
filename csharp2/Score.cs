@@ -1,6 +1,6 @@
 namespace TennisGame.Tests
 {
-    internal enum Score
+    public enum Score
     {
         Love,
         Fifteen,

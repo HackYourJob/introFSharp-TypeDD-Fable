@@ -11,12 +11,12 @@ namespace TennisGame.Tests
 
         public Game()
         {
-            _gameState = new GameState(Score.Love, Score.Love);
+            _gameState = new PointScore(Score.Love, Score.Love);
         }
 
-        public Game(Score player1Score, Score player2Score)
+        public Game(GameState gameState)
         {
-            _gameState = new GameState(player1Score, player2Score);
+            _gameState = gameState;
         }
 
         internal Game ScoreAPoint(Player player)

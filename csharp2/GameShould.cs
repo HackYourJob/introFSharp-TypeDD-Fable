@@ -68,7 +68,7 @@ namespace TennisGame.Tests
         [Fact]
         public void ReturnPlayer1WonGameWhenScoreIsFortyThirtyAndPlayer1Scores()
         {
-            var game = new Game(Score.Forty, Score.Thirty);
+            var game = new Game(new PointScore(Score.Forty, Score.Thirty));
             game.ScoreAPoint(Player.Player1);
             game.Player1Score.Should().Be(Score.Game);
             game.Player2Score.Should().Be(Score.Thirty);
@@ -77,7 +77,7 @@ namespace TennisGame.Tests
         [Fact]
         public void ReturnPlayer1AdvantageWhenScoreIsDeuceAndPlayer1Scores()
         {
-            var game = new Game(Score.Forty, Score.Forty);
+            var game = new Game(new GameState(Score.Forty, Score.Forty));
             game.ScoreAPoint(Player.Player1);
             game.Player1Score.Should().Be(Score.Advantage);
             game.Player2Score.Should().Be(Score.Forty);
@@ -86,7 +86,7 @@ namespace TennisGame.Tests
         [Fact]
         public void ReturnPlayer1WonGameWhenScoreIsAdvantagePlayer1AndPlayer1Scores()
         {
-            var game = new Game(Score.Advantage, Score.Forty);
+            var game = new Game(new GameState(Score.Advantage, Score.Forty));
             game.ScoreAPoint(Player.Player1);
             game.Player1Score.Should().Be(Score.Game);
             game.Player2Score.Should().Be(Score.Forty);
@@ -95,7 +95,7 @@ namespace TennisGame.Tests
         [Fact]
         public void ReturnDeuceWhenScoreIsAdvantagePlayer1AndPlayer2Scores()
         {
-            var game = new Game(Score.Advantage, Score.Forty);
+            var game = new Game(new GameState(Score.Advantage, Score.Forty));
             game.ScoreAPoint(Player.Player2);
             game.Player1Score.Should().Be(Score.Forty);
             game.Player2Score.Should().Be(Score.Forty);

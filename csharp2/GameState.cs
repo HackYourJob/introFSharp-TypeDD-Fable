@@ -1,6 +1,6 @@
 namespace TennisGame.Tests
 {
-    internal class GameState
+    public class GameState
     {
         public GameState(Score player1Score, Score player2Score)
         {
@@ -23,16 +23,9 @@ namespace TennisGame.Tests
             }
         }
 
-        internal GameState ScoreAPoint(Player player)
+        internal virtual GameState ScoreAPoint(Player player)
         {
-            if (State == StateEnum.PointScore)
-            {
-                if (player == Player.Player1)
-                    Player1Score = AddPoint(Player1Score);
-                else
-                    Player2Score = AddPoint(Player2Score);
-            }
-            else if (State == StateEnum.Deuce)
+            if (State == StateEnum.Deuce)
             {
                 if (player == Player.Player1)
                     Player1Score = Score.Advantage;
@@ -53,18 +46,6 @@ namespace TennisGame.Tests
                     Player1Score = Score.Forty;
             }
             return this;
-        }
-
-        private Score AddPoint(Score playerScore)
-        {
-            if (playerScore == Score.Love)
-                return Score.Fifteen;
-            else if (playerScore == Score.Fifteen)
-                return Score.Thirty;
-            else if (playerScore == Score.Thirty)
-                return Score.Forty;
-            else
-                return Score.Game;
         }
 
         private enum StateEnum
