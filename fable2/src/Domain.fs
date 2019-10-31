@@ -1,32 +1,41 @@
 module App.Domain
 
-type PlayerScore =
+type Score = 
+    | OtherPoints of ScorePoint * ScorePoint
+    | Forty of Player * ScorePoint
+    | Deuce
+    | Advantage of Player
+    | Game of Player
+and ScorePoint =
     | Love
     | Fifteen
     | Thirty
-type Player = Player1 | Player2
+and Player = Player1 | Player2
 
-type Score =
-    | Game of Player
-    | Advantage of Player
-    | Deuce
-    | Forty of Player * PlayerScore
-    | OtherPoints of PlayerScore * PlayerScore
+let private scoreWithOtherPoint player (player1Score, player2Score) =
+    match player with
+    | Player1 ->
+        match player1Score with
+        | Love -> OtherPoints (Fifteen, player2Score)
+        | Fifteen -> OtherPoints (Thirty, player2Score)
+        | Thirty -> Forty (player, player2Score)
+    | Player2 ->
+        match player2Score with
+        | Love -> OtherPoints (player1Score, Fifteen)
+        | Fifteen -> OtherPoints (player1Score, Thirty)
+        | Thirty -> Forty (player, player1Score)
 
-let scoreAPoint player previousScore =
-    let addPoint = function
-        | Love -> Fifteen
-        | Fifteen -> Thirty
-        | Thirty -> failwith "impossible state!!"
-    match previousScore, player with
-    | Game _, _ -> previousScore
-    | Deuce, _ -> Advantage player
-    | Advantage p, _ when p = player -> Game p
-    | Advantage _, _ -> Deuce
-    | Forty (p, _), _ when p = player -> Game p
-    | Forty (p, Thirty), _ -> Deuce
-    | Forty (p, point), _ -> Forty (p, addPoint point)
-    | OtherPoints (Thirty, p2), Player1 -> Forty (player, p2)
-    | OtherPoints (p1, Thirty), Player2 -> Forty (player, p1)
-    | OtherPoints (p1, p2), Player1 -> OtherPoints (addPoint p1, p2)
-    | OtherPoints (p1, p2), Player2 -> OtherPoints (p1, addPoint p2)
+let scoreAPoint player previousScore = 
+    match previousScore with
+    | OtherPoints (player1Score, player2Score) -> scoreWithOtherPoint player (player1Score, player2Score)
+    | Forty (fortyPlayer, _) when fortyPlayer = player -> Game player
+    | Forty (fortyPlayer, otherScore) -> 
+        match otherScore with
+        | Love -> Forty(fortyPlayer, Fifteen)
+        | Fifteen -> Forty(fortyPlayer, Thirty)
+        | Thirty -> Deuce
+    | Deuce -> Advantage player
+    | Advantage p when p = player -> Game player
+    | Advantage _ -> Deuce
+    | Game _ -> previousScore
+
