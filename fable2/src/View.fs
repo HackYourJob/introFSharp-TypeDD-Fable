@@ -13,7 +13,7 @@ let formatScore = function
     | OtherPoints (player1Score, player2Score) -> sprintf "%A - %A" player1Score player2Score 
     | model -> sprintf "%A" model
 
-let view model dispatch =
+let view (model, _) dispatch =
     div [] [
         div [] [
             str "Which player scores?"

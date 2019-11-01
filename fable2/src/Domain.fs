@@ -1,11 +1,12 @@
-// cardinality : 36 -> 27 -> 20
+module App.Domain
+
 type Score = 
-    | OtherPoints of ScorePoint * ScorePoint // 9
-    | Forty of Player * ScorePoint // 6
-    | Deuce // 1
-    | Advantage of Player // 2
-    | Game of Player // 2
-and ScorePoint = // 3
+    | OtherPoints of ScorePoint * ScorePoint
+    | Forty of Player * ScorePoint
+    | Deuce
+    | Advantage of Player
+    | Game of Player
+and ScorePoint =
     | Love
     | Fifteen
     | Thirty
@@ -37,10 +38,4 @@ let scoreAPoint player previousScore =
     | Advantage p when p = player -> Game player
     | Advantage _ -> Deuce
     | Game _ -> previousScore
-
-OtherPoints (Love, Love)
-|> scoreAPoint Player1
-|> scoreAPoint Player1
-|> scoreAPoint Player2
-|> scoreAPoint Player1
 
