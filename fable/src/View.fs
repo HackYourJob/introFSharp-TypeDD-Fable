@@ -7,11 +7,11 @@ open App.Domain
 open App.Update
 
 let formatScore = function
-    | Game player -> sprintf "%A win" player
-    | Forty (Player1, playerScore) -> sprintf "Forty - %A" playerScore
-    | Forty (Player2, playerScore) -> sprintf "%A - Forty" playerScore
-    | OtherPoints (player1Score, player2Score) -> sprintf "%A - %A" player1Score player2Score 
-    | model -> sprintf "%A" model
+    | Game player -> $"%A{player} win 🎉"
+    | Forty (Player1, playerScore) -> $"Forty - %A{playerScore}"
+    | Forty (Player2, playerScore) -> $"%A{playerScore} - Forty"
+    | OtherPoints (player1Score, player2Score) -> $"%A{player1Score} - %A{player2Score}" 
+    | model -> $"%A{model}"
 
 let view (model, _) dispatch =
     div [] [
