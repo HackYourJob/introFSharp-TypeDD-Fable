@@ -7,6 +7,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "csharp1", "csharp1\csharp1.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "csharp2", "csharp2\csharp2.csproj", "{C0671E28-BFBA-4778-8CC2-6BA9B353A587}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Livecoding", "Livecoding", "{3DFAB193-63A7-4452-B241-7638B3454436}"
+	ProjectSection(SolutionItems) = preProject
+		livecoding\Game.fsx = livecoding\Game.fsx
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Kata", "Kata", "{47F79279-AAAD-4065-9703-7432B276450C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +31,9 @@ Global
 		{C0671E28-BFBA-4778-8CC2-6BA9B353A587}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0671E28-BFBA-4778-8CC2-6BA9B353A587}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0671E28-BFBA-4778-8CC2-6BA9B353A587}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BC85B897-EF1B-4C97-B1BF-02CBF65CB37F} = {47F79279-AAAD-4065-9703-7432B276450C}
+		{C0671E28-BFBA-4778-8CC2-6BA9B353A587} = {47F79279-AAAD-4065-9703-7432B276450C}
 	EndGlobalSection
 EndGlobal
