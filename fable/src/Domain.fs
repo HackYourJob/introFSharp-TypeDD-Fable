@@ -1,6 +1,6 @@
 module App.Domain
 
-type Score = 
+type Score =
     | OtherPoints of ScorePoint * ScorePoint
     | Forty of Player * ScorePoint
     | Deuce
@@ -25,11 +25,11 @@ let private scoreWithOtherPoint player (player1Score, player2Score) =
         | Fifteen -> OtherPoints (player1Score, Thirty)
         | Thirty -> Forty (player, player1Score)
 
-let scoreAPoint player previousScore = 
+let scoreAPoint player previousScore =
     match previousScore with
     | OtherPoints (player1Score, player2Score) -> scoreWithOtherPoint player (player1Score, player2Score)
     | Forty (fortyPlayer, _) when fortyPlayer = player -> Game player
-    | Forty (fortyPlayer, otherScore) -> 
+    | Forty (fortyPlayer, otherScore) ->
         match otherScore with
         | Love -> Forty(fortyPlayer, Fifteen)
         | Fifteen -> Forty(fortyPlayer, Thirty)

@@ -1,5 +1,5 @@
 // STEP 1
-// cardinality = 36 
+// cardinality = 36
 // type PlayerScore =
 //     | Love
 //     | Fifteen

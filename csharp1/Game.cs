@@ -32,7 +32,7 @@ namespace TennisKata
 
         internal void ScoreAPoint(Player player)
         {
-            if (player == Player.Player1) 
+            if (player == Player.Player1)
                 (_player1Score, _player2Score) = AddPoint(_player1Score, _player2Score);
             else
                 (_player2Score, _player1Score) = AddPoint(_player2Score, _player1Score);
